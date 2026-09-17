@@ -2,9 +2,9 @@
 
 **Cách dùng:** Thay mọi dấu `…` bằng bài làm thật của bạn trước khi nộp link fork trên VLearn. Giữ nguyên bốn mục và bảng để coach đọc nhanh. Viết ngắn, cụ thể theo ảnh/vùng; không cần thuật ngữ chuyên sâu. Ví dụ trong [hướng dẫn mẫu](reports/REPORT_TEMPLATE.md) chỉ giúp hiểu cách điền, không phải câu trả lời để chép lại.
 
-- Mã học viên theo lớp: …
-- Ngày / CVAT local: …
-- Công cụ đã dùng: …
+- Mã học viên theo lớp: K4-L2-DAY05-NguyenThaiHa-2A202602309
+- Ngày / CVAT local: 18/9/2026
+- Công cụ đã dùng: CVAT, SAM
 
 Mã học viên là mã lớp cấp; không cần ghi họ tên trong report nếu kênh VLearn đã nhận diện bạn. Chỉ ghi công cụ thật sự đã dùng; không có SAM vẫn làm bài bình thường.
 
@@ -14,9 +14,9 @@ Ghi tên ZIP đúng như file trong `submissions/` và số ảnh đã vẽ, Sav
 
 | Task | File ZIP đúng tên | Hoàn thành mấy ảnh | Điểm tối đa (coach chấm sau) |
 | --- | --- | ---: | ---: |
-| easy_semantic | … | … / 3 | 20 |
-| medium_instance | … | … / 3 | 32 |
-| hard_panoptic | … | … / 2 | 30 |
+| easy_semantic | … | 3 / 3 | 20 |
+| medium_instance | … |3 / 3 | 32 |
+| hard_panoptic | … |2 / 2 | 30 |
 | cp1_holes | … | … / 1 | 3 |
 | cp2_slice | … | … / 1 | 3 |
 | cp5_occlusion | … | … / 1 | 3 |
@@ -28,32 +28,30 @@ Ghi tên ZIP đúng như file trong `submissions/` và số ảnh đã vẽ, Sav
 Nếu export lỗi, ghi task, dữ liệu đã Save đến đâu và lỗi đã báo coach.
 
 ## 2. Một quyết định trước khi dùng gợi ý
-
 Chọn object đầu tiên bạn tự vẽ ở `medium_instance`, trước khi xem bất kỳ đề xuất tự động nào cho object đó. Ghi ảnh/vị trí đủ để tìm lại; “quy tắc biên” là lý do bạn chọn hoặc dừng mask ở ranh đó.
-
-- Ảnh, vị trí và object Medium đầu tiên tự vẽ: …
-- Class và quy tắc tôi dùng để chọn biên: …
-- Nếu dùng gợi ý sau đó: vùng gợi ý sai/đúng, hành động sửa/giữ và lý do: …
-- Nếu không dùng gợi ý: ghi “không dùng”; vẫn giải thích một quyết định gán nhãn của mình.
-
-## 3. Một lỗi tôi tìm thấy và sửa
-
-Chọn một lỗi **có thật** trong bài. Nếu công cụ lỗi khiến bạn chưa sửa được, ghi rõ đã thử gì và cần coach hỗ trợ gì; không ghi “đã sửa” khi chưa sửa.
-
-- Task/ảnh/vùng: …
-- Lỗi thuộc loại: sai lớp / thiếu-thừa vật / gộp-tách / biên / phủ vùng / khác: …
-- Bằng chứng tôi nhìn thấy: …
-- Quy tắc và hành động sửa: …
-- Sau sửa đã Save và export lại chưa? …
-
-Nếu bạn **đã xem Summary tự đánh giá trên GitHub Actions hoặc tự chạy script**, ghi ngắn một kết quả liên quan lỗi vừa sửa (ví dụ task, metric trước/sau nếu có): … / chưa có điểm. Scorecard ba tier tối đa **82**, không phải điểm cuối trên 100. Không tự ghi PASS/top 3/bonus; người phụ trách xác nhận theo tiêu chí lớp. Không đưa file ground truth vào fork.
-
-## 4. Ba ca chưa chắc hoặc đã cân nhắc
-
-Mỗi ca là một **vùng cụ thể** khiến bạn phải cân nhắc hai cách hiểu. Ghi dấu hiệu nhìn thấy hoặc quy tắc đã dùng, rồi nêu quyết định hoặc câu hỏi cho coach. Không cần ba lỗi; ca đã quyết định được cũng hợp lệ.
-
-| Ảnh/vị trí | Hai cách hiểu có thể | Quy tắc/chứng cứ | Quyết định hoặc câu hỏi cho coach |
-| --- | --- | --- | --- |
-| 1 | … | … | … |
-| 2 | … | … | … |
-| 3 | … | … | … |
+- Ảnh: `data/tiers/medium_instance/images/` (ảnh 1)
+- Vị trí và class: Chiếc xe con (`car`) ở góc tiền cảnh phía trước bên trái khung hình
+- Quy tắc biên bạn tự đặt ra: Vẽ ôm sát mép vỏ thân xe, gương chiếu hậu và lốp xe chạm mặt đường; tính trọn phần kính chắn gió vào xe; dừng mask tại mép tiếp đất của lốp xe, không đưa bóng đổ dưới đường vào mask của xe
+- Nếu sau đó dùng gợi ý, ghi một lỗi hoặc lý do bạn giữ đề xuất: Gợi ý AI (SAM) bị nhận diện lem phần bóng đen dưới gầm xe vào mask của xe, tôi phải dùng Brush thủ công tẩy bớt phần bóng đổ để trả lại ranh giới mặt đường
+## 3. Một lỗi và hành động sửa
+Mô tả một lỗi bạn gặp phải trong quá trình làm (vẽ nhãn, chọn lớp, hoặc export) và cách bạn đã xử lý để ra kết quả đúng.
+- Lỗi: Chọn nhầm định dạng export của task `easy_semantic` thành COCO 1.0 thay vì Segmentation mask 1.1
+- Phát hiện lúc nào / bằng cách nào: Phát hiện lúc kiểm tra file zip trước khi nộp và đối chiếu lại yêu cầu trong GUIDE.md
+- Hành động sửa: Vào lại CVAT task `easy_semantic`, chọn Export task dataset đúng định dạng `Segmentation mask 1.1`, tải về đổi tên thành `easy_semantic.zip` và lưu vào thư mục `submissions/`
+## 4. Ba ca chưa chắc
+Ghi lại ba trường hợp ranh giới hoặc phân loại mà bạn thấy mơ hồ nhất, kèm theo cách bạn đã quyết định và lý do.
+### Ca 1
+- Tier / ảnh / đối tượng hoặc vùng: Easy semantic / ảnh 1 / Ranh giới giữa `road` và `sidewalk`
+- Phân vân giữa: Gộp phần vỉa hè bị bóng cây che tối vào `road` hay tách riêng thành `sidewalk`
+- Quyết định cuối: Tách riêng thành `sidewalk` theo đường thẳng kéo dài của gờ bó vỉa hè
+- Lý do: Đảm bảo giữ đúng ranh giới cấu trúc vật lý của vỉa hè và lòng đường ngay cả khi bị bóng râm làm tối màu
+### Ca 2
+- Tier / ảnh / đối tượng hoặc vùng: Medium instance / ảnh 2 / Chiếc xe bị che khuất một phần phía sau
+- Phân vân giữa: Vẽ phỏng đoán trọn vẹn cả chiếc xe hay chỉ vẽ phần thân xe nhìn thấy
+- Quyết định cuối: Chỉ vẽ mask cho phần thân xe thực sự lộ diện trên ảnh
+- Lý do: Tuân thủ đúng nguyên tắc Instance Segmentation là chỉ gán nhãn cho các pixel nhìn thấy được, không vẽ đè lên vật cản phía trước
+### Ca 3
+- Tier / ảnh / đối tượng hoặc vùng: Hard panoptic / ảnh 1 / Tán lá cây giao với nền trời (`vegetation` và `sky`)
+- Phân vân giữa: Vẽ bao trọn cả tán cây bao gồm các kẽ hở hay tỉa từng lỗ hở nhỏ của bầu trời
+- Quyết định cuối: Vẽ bao tán lá lớn và chỉ trừ các khoảng trống bầu trời có kích thước lớn nhìn rõ
+- Lý do: Cân đối giữa độ mịn của ranh giới mask và tránh tạo ra quá nhiều viền răng cưa nhỏ gây nhiễu cho mô hình
